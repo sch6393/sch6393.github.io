@@ -1,10 +1,10 @@
 ## Welcome to My GitHub Pages
 
-https://github.com/sch6393
+[https://github.com/sch6393](https://github.com/sch6393)
 
 ### My Wiki
 
-https://github.com/sch6393/SCHKnowledgeWiki
+[https://github.com/sch6393/SCHKnowledgeWiki](https://github.com/sch6393/SCHKnowledgeWiki)
 
 ### Jekyll Themes
 
