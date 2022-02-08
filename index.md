@@ -4,7 +4,7 @@
 
 ### My Wiki
 
-[https://github.com/sch6393/SCHKnowledgeWiki](https://github.com/sch6393/SCHKnowledgeWiki)
+[https://sch6393.github.io/SCH/](https://sch6393.github.io/SCH/)
 
 ### Jekyll Themes
 
