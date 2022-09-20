@@ -12,7 +12,7 @@ sch6393@gmail.com
 
 ### My Wiki
 
-[https://sch6393.github.io/SCH/](https://sch6393.github.io/SCH/)
+[https://sch6393.github.io/sch/](https://sch6393.github.io/sch/)
 
 ### Jekyll Themes
 
