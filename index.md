@@ -10,7 +10,7 @@
 
 sch6393@gmail.com
 
-### My Wiki
+### My Document
 
 [https://sch6393.github.io/sch/](https://sch6393.github.io/sch/)
 
