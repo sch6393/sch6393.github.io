@@ -1,0 +1,87 @@
+Sequence
+===
+
+### 생성
+```sql
+CREATE SEQUENCE owner_name.seq_name;
+```
+
+<br>
+
+### 옵션 기본 값 및 설명
+|Name|Value|Description|
+|-|-|-|
+|MIN_VALUE|1|최소 값|
+|MAX_VALUE|9999999999999999999999999999|최대 값|
+|INCREMENT_BY|1|증가하는 숫자|
+|CYCLE_FLAG|N|순환 여부|
+|ORDER_FLAG|N|순서대로 생성 여부<br>Y : 시퀀스 값을 건너뛸 수 없음 (RAC 구성)<br>N : 시퀀스 값을 건너뛸 수 있음|
+|CACHE_SIZE|20|메모리에 할당해 놓을 양|
+|LAST_NUMBER|1|현재 값|
+|SCALE_FLAG|N|확장 가능 여부<br>Y : 6자리 숫자가 앞에 추가 (`[(instance id % 100) + 100]` ¦¦ `[session id % 1000]`)|
+|EXTEND_FLAG|N|확장 접두사 추가에 따른 변수와 테이블 열의 크기 조정 여부|
+|SHARDED_FLAG|N|
+|SESSION_FLAG|N|세션 시퀀스 여부 (세션이 사라지면 액세스한 세션 시퀀스의 상태도 없어지는 특징을 가짐)|
+|KEEP_VALUE|N|[애플리케이션 연속성 (Application Continuity)](https://docs.oracle.com/en/database/oracle/oracle-database/21/racad/ensuring-application-continuity.html#GUID-E4A114A2-EA77-4037-A62A-BDFCF1E6D072) 에 대해 원래 값 유지 여부 (사용자가 해당 Owner일 경우에만 발생)|
+|DUPLICATED|N|
+|SHARDED|N|
+
+<br>
+
+### 수정
+```sql
+ALTER SEQUENCE owner_name.seq_name option_name value;
+
+--INCREMENT BY
+ALTER SEQUENCE owner_name.seq_name INCREMENT BY 1000;
+
+--MAXVALUE
+ALTER SEQUENCE owner_name.seq_name MAXVALUE 9999999;
+
+--CACHE
+ALTER SEQUENCE owner_name.seq_name CACHE 1000;
+ALTER SEQUENCE owner_name.seq_name NOCACHE;
+
+--CYCLE
+ALTER SEQUENCE owner_name.seq_name CYCLE;
+ALTER SEQUENCE owner_name.seq_name NOCYCLE;
+```
+
+<br>
+
+### 시퀀스 현재 값 확인
+```sql
+--User
+SELECT LAST_NUMBER FROM USER_SEQUENCES WHERE SEQUENCE_NAME = 'seq_name';
+
+--DBA
+SELECT LAST_NUMBER FROM DBA_SEQUENCES  WHERE SEQUENCE_NAME = 'seq_name';
+```
+
+<br>
+
+### 삭제
+```sql
+DROP SEQUENCE owner_name.seq_name;
+```
+
+<br>
+
+### MySQL의 AUTO_INCREMENT처럼 사용
+```sql
+CREATE TABLE owner_name.table_name (
+	seq          NUMBER(22) DEFAULT owner_name.sequence_name.nextval,
+	column_name1 VARCHAR2(100),
+	column_name2 VARCHAR2(100),
+	...
+	column_name8 VARCHAR2(100),
+	column_name9 VARCHAR2(100),
+	CONSTRAINT "pk_name" PRIMARY KEY (seq)
+) TABLESPACE tablespace_name;
+
+--MySQL의 AUTO_INCREMENT처럼 시퀀스 증가 컬럼을 제외한 나머지 컬럼에 데이터를 넣으면 됨
+INSERT INTO owner_name.table_name (column_name1, column_name2, ... column_name8, column_name9) VALUES (value1, value2, ... value8, value9);
+```
+>12c부터 가능, 비슷한 기능인 [IDENTITY](../identity/README.md)도 있음
+
+<br>

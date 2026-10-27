@@ -1,0 +1,49 @@
+site_name: SCH Document
+site_url: https://sch6393.github.io/
+repo_url: https://github.com/sch6393/sch6393.github.io
+
+theme:
+  name: material
+  language: ko
+  icon:
+    annotation: material/arrow-right-circle
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/weather-night
+        name: Dark mode
+    - scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: Light mode
+
+  features:
+    - navigation.indexes
+    #- navigation.sections
+    #- navigation.expand
+    - navigation.top
+    #- toc.integrate
+    - content.code.copy
+    - content.code.annotate
+    
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - admonition
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+
+plugins:
+  - search
+  - readme-titles
