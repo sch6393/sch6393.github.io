@@ -6,3 +6,6 @@ __pycache__/
 
 # Python package metadata
 *.egg-info/
+
+# MkDocs build output
+site/
